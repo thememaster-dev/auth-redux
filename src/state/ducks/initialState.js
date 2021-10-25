@@ -1,10 +1,14 @@
+import moment from 'moment';
+
+const curTime = moment().format('DD MM YYYY');
+
 export const initialState = {
     authData: [
         {
             id: 1,
             role: 'user',
             fullName: 'ariful islam',
-            token: '',
+            token: `${curTime} user`,
             email: 'abc123@gmail.com',
             password: 'abc123'
         },
@@ -12,7 +16,7 @@ export const initialState = {
             id: 2,
             role: 'admin',
             fullName: 'sabbir ahmed',
-            token: '',
+            token: `${curTime} admin`,
             email: 'abcd1234@gmail.com',
             password: 'abcd1234'
         },
@@ -20,7 +24,7 @@ export const initialState = {
             id: 3,
             role: 'visitor',
             fullName: 'antor shuvo',
-            token: '',
+            token: `${curTime} visitor`,
             email: 'abcde12345@gmail.com',
             password: 'abcde12345'
         },
@@ -28,6 +32,6 @@ export const initialState = {
     authenticate: {
         isAuthenticated: false,
         error: null,
-        user: null
+        user: {}
     }
 }

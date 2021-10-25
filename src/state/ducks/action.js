@@ -1,4 +1,4 @@
-const authLogin = (authData) => ({
+export const authLogin = (authData) => ({
     type: 'login',
     payload: authData
 })
