@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
-import { authLogin } from '../state/ducks/action';
+import { authLogin, authLogout } from '../state/ducks/action';
 
 const LoginFrom = (props) => {
-    const { onSubmit, submittedData } = props;
+    const { onSubmit, submittedData, onClick } = props;
 
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -11,6 +11,11 @@ const LoginFrom = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         onSubmit({ email, password })
+    }
+
+    const onButtonClick = e => {
+        e.preventDefault();
+        onClick()
     }
 
     useEffect(() => {
@@ -32,7 +37,7 @@ const LoginFrom = (props) => {
             </form> : <>
                 <span>name: {submittedData?.authenticate?.user?.fullName}</span><br />
                 <span> role: {submittedData?.authenticate?.user?.role}</span><br />
-                <button type="button">logout</button></>
+                <button type="button" onClick={onButtonClick}>logout</button></>
             }
         </>
 
@@ -47,7 +52,8 @@ const mapStateToProps = submittedData => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmit: (submitData) => dispatch(authLogin(submitData))
+        onSubmit: (submitData) => dispatch(authLogin(submitData)),
+        onClick: (logout) => dispatch(authLogout(logout))
     }
 }
 
