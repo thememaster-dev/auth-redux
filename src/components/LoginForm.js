@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 import { authLogin, authLogout } from '../state/ducks/action';
 
-const LoginFrom = (props) => {
+const LoginForm = (props) => {
     const { onSubmit, submittedData, onClick } = props;
 
     const [email, setEmail] = useState(null);
@@ -57,4 +57,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginFrom)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
